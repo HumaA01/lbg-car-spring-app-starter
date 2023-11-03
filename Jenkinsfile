@@ -11,8 +11,8 @@ pipeline {
             steps{
                 script{
                     def sshKeyCredential = credentials('ce604df4-ed76-4623-959f-2a0901c037ca')
-                    sshagent(['~/.ssh/id_rsa']){
-                        sh 'ssh -t -o StrictHostKeyChecking=no huma_ahmed@livelaughlloyds-docker "echo hello"' 
+                    sshagent(credentials: [sshKeyCredential]){
+                        sh 'ssh -o StrictHostKeyChecking=no $SSH_KEY_FILE huma_ahmed@livelaughlloyds-docker "echo hello"' 
                     }
                 }
             }
