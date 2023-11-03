@@ -10,7 +10,7 @@ pipeline {
         stage('SSH to Server 2'){
             steps{
                 script{
-                    sshagent([/var/lib/jenkins/.ssh/id_rsa]){
+                    sshagent([~/.ssh/id_rsa]){
                         sh 'ssh -o StrictHostKeyChecking=no jenkins@livelaughlloyds-docker "whoami"' 
                     }
                 }
