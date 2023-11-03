@@ -7,6 +7,16 @@ pipeline {
     }
 
     stages {
+        stage('SSH to Server 2'){
+            steps{
+                script{
+                    sshagent(['/home/huma_ahmed/.ssh/id_rsa']){
+                        sh 'ssh -o StrictHostKeyChecking=no huma_ahmed@livelaughlloyds-docker "exit"'
+                    }
+                }
+            }
+            
+        }
         stage('Checkout') {
             steps {
                 // Get some code from a GitHub repository
