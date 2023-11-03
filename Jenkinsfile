@@ -11,7 +11,7 @@ pipeline {
             steps{
                 script{
                     sshagent(['~/.ssh/id_rsa']){
-                        sh 'ssh -o StrictHostKeyChecking=no huma_ahmed@livelaughlloyds-docker'
+                        sh 'ssh -t -o StrictHostKeyChecking=no huma_ahmed@livelaughlloyds-docker "exit"'
                     }
                 }
             }
