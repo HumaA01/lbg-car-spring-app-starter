@@ -10,10 +10,8 @@ pipeline {
         stage('SSH to Server 2'){
             steps{
                 script{
-                    def sshKeyCredential = credentials(ce604df4-ed76-4623-959f-2a0901c037ca)
-                    
-                    sshagent(credentials: [sshKeyCredential]){
-                        sh 'ssh -o StrictHostKeyChecking=no $SSH_KEY_FILE huma_ahmed@livelaughlloyds-docker "echo hello"' 
+                    sshagent([/var/lib/jenkins/.ssh/id_rsa]){
+                        sh 'ssh -o StrictHostKeyChecking=no jenkins@livelaughlloyds-docker "whoami"' 
                     }
                 }
             }
